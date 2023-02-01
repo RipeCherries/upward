@@ -1,152 +1,172 @@
-(function() {
-    this.UpWard = function() {
-        const defaults = {
+export class UpWard {
+    constructor(userSettings) {
+        this.#setSettings();
+        this.#extendSettings(userSettings);
+
+        this.container = this.#getMarkup();
+        this.#setup();
+
+        this.isDisplay = false;
+    }
+
+    #setSettings() {
+        const defaultSettings = {
             position: "left",
             offset: 20,
             bottomOffset: 20,
             containerSize: 30,
             containerRadius: 10,
-            containerClass: "upward-container",
             containerColor: "#000000",
-            arrowClass: "upward-arrow",
             arrowColor: "#ffffff",
             alwaysVisible: false,
             trigger: 100,
             zIndex: 1
         };
 
-        if (arguments[0] && typeof arguments[0] === "object") {
-            this.options = extendDefaults(defaults, arguments[0]);
+        if (this.settings) {
+            return;
         }
 
-        this.init();
-    };
-
-    function extendDefaults(src, properties) {
-        console.log(properties)
-        if (properties.position !== "right" && properties.position !== "left") {
-            src.position = "left";
-        } else {
-            src.position = properties.position;
-        }
-
-        if (properties.offset < 0) {
-            src.offset = 0;
-        } else {
-            src.offset = properties.offset;
-        }
-
-        if (properties.bottomOffset < 0) {
-            src.bottomOffset = 0;
-        } else {
-            src.bottomOffset = properties.bottomOffset;
-        }
-
-        if (properties.containerSize < 20) {
-            src.containerSize = 20;
-        } else {
-            src.containerSize = properties.containerSize;
-        }
-
-        if (properties.containerRadius < 0) {
-            src.containerRadius = 0;
-        } else {
-            src.containerRadius = properties.containerRadius;
-        }
-
-        const colorReg = /(^#[0-9A-F]{6}$)|(^#[0-9A-F]{3}$)/i;
-
-        if (!colorReg.test(properties.containerColor)) {
-            src.containerColor = "#000000";
-        } else {
-            src.containerColor = properties.containerColor;
-        }
-
-        if (!colorReg.test(properties.arrowColor)) {
-            src.arrowColor = "#ffffff"
-        } else {
-            src.arrowColor = properties.arrowColor;
-        }
-
-        if (isNaN(properties.zIndex)) {
-            src.zIndex = 1;
-        } else {
-            src.zIndex = properties.zIndex;
-        }
-
-        console.log(src);
-
-        return src;
+        this.settings = defaultSettings;
     }
-    
-    function fadeIn(element, ms) {
-        element.style.opacity = 0;
 
-        if (ms) {
-            let opacity = 0;
-            const timer = setInterval(function () {
-                opacity += 50 / ms;
+    #extendSettings(userSettings) {
+        if (userSettings.position === "right" || userSettings.position === "left") {
+            this.settings.position = userSettings.position;
+        }
 
-                if (opacity >= 1) {
-                    clearInterval(timer);
-                    opacity = 1;
-                }
+        if (userSettings.offset >= 0) {
+            this.settings.offset = userSettings.offset;
+        }
 
-                element.style.opacity = opasity;
-            }, 50);
-        } else {
-            element.style.opacity = 1;
+        if (userSettings.bottomOffset >= 0) {
+            this.settings.bottomOffset = userSettings.bottomOffset;
+        }
+
+        if (userSettings.containerSize > 0) {
+            this.settings.containerSize = userSettings.containerSize;
+        }
+
+        if (userSettings.containerRadius >= 0) {
+            this.settings.containerRadius = userSettings.containerRadius;
+        }
+
+        if ((/(^#[0-9A-F]{6}$)|(^#[0-9A-F]{3}$)/i).test(userSettings.containerColor)) {
+            this.settings.containerColor = userSettings.containerColor;
+        }
+
+        if ((/(^#[0-9A-F]{6}$)|(^#[0-9A-F]{3}$)/i).test(userSettings.arrowColor)) {
+            this.settings.arrowColor = userSettings.arrowColor;
+        }
+
+        if (typeof userSettings.alwaysVisible === "boolean") {
+            this.settings.alwaysVisible = userSettings.alwaysVisible;
+        }
+
+        if (userSettings.trigger >= 0) {
+            this.settings.trigger = userSettings.trigger;
+        }
+
+        if (!isNaN(userSettings.zIndex)) {
+            this.settings.zIndex = userSettings.zIndex;
         }
     }
 
-    function fadeOut(element, ms) {
-        if (ms) {
-            element.style.transition = "opacity" + ms + "ms";
-            element.addEventListener("transitionend", function(event) {
-                element.style.display = "none";
-            }, false);
-        }
-
-        element.style.opacity = 0;
-    }
-
-    UpWard.prototype.init = function () {
-        const body = document.body;
-
+    #getMarkup() {
         const container = document.createElement("div");
-        container.classList.add(this.options.containerClass);
-
         const arrow = document.createElement("div");
-        arrow.classList.add(this.options.arrowClass);
-
+    
+        container.classList.add("upward-container");
+        arrow.classList.add("upward-arrow");
+    
         container.appendChild(arrow);
 
-        body.appendChild(container);
-
-        /* --- container styles --- */
         container.style["position"] = "fixed";
         container.style["cursor"] = "pointer";
-        container.style["width"] = this.options.containerSize + "px";
-        container.style["height"] = this.options.containerSize + "px";
-        container.style["borderRadius"] = this.options.containerRadius + "px";
-        container.style["background"] = this.options.containerColor;
-        container.style[this.options.position] = this.options.offset + "px";
-        container.style["bottom"] = this.options.bottomOffset + "px";
-        container.style["zIndex"] = this.options.zIndex;
+        container.style["width"] = this.settings.containerSize + "px";
+        container.style["height"] = this.settings.containerSize + "px";
+        container.style["borderRadius"] = this.settings.containerRadius + "px";
+        container.style["background"] = this.settings.containerColor;
+        container.style[this.settings.position] = this.settings.offset + "px";
+        container.style["bottom"] = this.settings.bottomOffset + "px";
+        container.style["zIndex"] = this.settings.zIndex;
+        container.style["display"] = "none";
 
-        /* --- arrow styles --- */
         arrow.style["width"] = 0;
         arrow.style["height"] = 0;
         arrow.style["margin"] = "0 auto";
-        arrow.style["paddingTop"] = Math.ceil(0.325 * this.options.containerSize) + "px";
+        arrow.style["paddingTop"] = Math.ceil(0.325 * this.settings.containerSize) + "px";
         arrow.style["borderStyle"] = "solid";
-        arrow.style["borderWidth"] = "0 " + (0.25 * this.options.containerSize) + "px " +
-                                     (0.25 * this.options.containerSize) + "px " +
-                                     (0.25 * this.options.containerSize) + "px";
-        arrow.style["borderColor"] = "transparent transparent " + this.options.arrowColor + " transparent";
+        arrow.style["borderWidth"] = "0 " + (0.25 * this.settings.containerSize) + "px " +
+                                     (0.25 * this.settings.containerSize) + "px " +
+                                     (0.25 * this.settings.containerSize) + "px";
+        arrow.style["borderColor"] = "transparent transparent " + this.settings.arrowColor + " transparent";
+    
+        return container;
+    }
 
-        container.addEventListener("click", function () {
-            window.scroll({ top: 0, left: 0, behavior: 'smooth' });
-        });
-    };
-}());
+    #setup() {
+        document.body.appendChild(this.container);
+
+        this.clickHandler = this.clickHandler.bind(this);
+        this.container.addEventListener("click", this.clickHandler);
+
+        this.scrollHandler = this.scrollHandler.bind(this);
+        if (!this.settings.alwaysVisible) {
+            window.addEventListener("scroll", this.scrollHandler);
+        } else {
+            this.fadeIn(this.container);
+        }
+    }
+
+    clickHandler() {
+        window.scroll({ top: 0, left: 0, behavior: 'smooth' });
+    }
+
+    scrollHandler() {
+        if (window.pageYOffset > this.settings.trigger) {
+            if (!this.isDisplay) {
+                this.isDisplay = true;
+                this.fadeIn(this.container, 1000);
+            }
+        } else {
+            if (this.isDisplay) {
+                this.isDisplay = false;
+                this.fadeOut(this.container, 1000);
+            }
+        }
+    }
+
+    fadeIn(element, ms) {
+        element.style["opacity"] = 0;
+        element.style["display"] = "block";
+      
+        if (ms) {
+            let opacity = 0;
+            
+            const timer = setInterval(function() {
+            opacity += 50 / ms;
+            
+            if (opacity >= 1) {
+                clearInterval(timer);
+                opacity = 1;
+            }
+
+            element.style["opacity"] = opacity;
+          }, 50);
+        } else {
+          element.style["opacity"] = 1;
+        }
+    }
+
+    fadeOut(element, ms) {
+        if (ms) {
+            element.style["transition"] = "opacity" + ms + "ms";
+            element.addEventListener("transitionend", function(e) {
+                element.style["display"] = "none";
+            }, false);
+        }
+
+        element.style["opacity"] = 0;
+    }
+}
