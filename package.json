@@ -1,6 +1,6 @@
 {
   "name": "@ripecherries/upward",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "description": "A simple library that allows users of your site to return to the top of the page",
   "source": "src/upward.plugin.js",
   "main": "dist/main.js",
