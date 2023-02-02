@@ -1,15 +1,18 @@
-export class UpWard {
+export default class UpWard {
     constructor(userSettings) {
         this.#setSettings();
         this.#extendSettings(userSettings);
 
-        this.container = this.#getMarkup();
         this.#setup();
 
         this.isDisplay = false;
     }
 
     #setSettings() {
+        if (this.settings) {
+            return;
+        }
+
         const defaultSettings = {
             position: "left",
             offset: 20,
@@ -22,10 +25,6 @@ export class UpWard {
             trigger: 100,
             zIndex: 1
         };
-
-        if (this.settings) {
-            return;
-        }
 
         this.settings = defaultSettings;
     }
@@ -73,50 +72,26 @@ export class UpWard {
     }
 
     #getMarkup() {
-        const container = document.createElement("div");
-        const arrow = document.createElement("div");
-    
-        container.classList.add("upward-container");
-        arrow.classList.add("upward-arrow");
-    
-        container.appendChild(arrow);
-
-        container.style["position"] = "fixed";
-        container.style["cursor"] = "pointer";
-        container.style["width"] = this.settings.containerSize + "px";
-        container.style["height"] = this.settings.containerSize + "px";
-        container.style["borderRadius"] = this.settings.containerRadius + "px";
-        container.style["background"] = this.settings.containerColor;
-        container.style[this.settings.position] = this.settings.offset + "px";
-        container.style["bottom"] = this.settings.bottomOffset + "px";
-        container.style["zIndex"] = this.settings.zIndex;
-        container.style["display"] = "none";
-
-        arrow.style["width"] = 0;
-        arrow.style["height"] = 0;
-        arrow.style["margin"] = "0 auto";
-        arrow.style["paddingTop"] = Math.ceil(0.325 * this.settings.containerSize) + "px";
-        arrow.style["borderStyle"] = "solid";
-        arrow.style["borderWidth"] = "0 " + (0.25 * this.settings.containerSize) + "px " +
-                                     (0.25 * this.settings.containerSize) + "px " +
-                                     (0.25 * this.settings.containerSize) + "px";
-        arrow.style["borderColor"] = "transparent transparent " + this.settings.arrowColor + " transparent";
-    
-        return container;
+        return `
+            <div class="upward-container" style="position: fixed; cursor: pointer; width: ${this.settings.containerSize}px; height: ${this.settings.containerSize}px; border-radius: ${this.settings.containerRadius}px; background: ${this.settings.containerColor}; ${this.settings.position}: ${this.settings.offset}px; bottom: ${this.settings.bottomOffset}px; z-index: ${this.settings.zIndex}; display: none;">
+                <div class="upward-arrow" style="width: 0; height:0; margin: 0 auto; padding-top: ${Math.ceil(0.325 * this.settings.containerSize)}px; border-style: solid; border-width: 0 ${0.25 * this.settings.containerSize}px ${0.25 * this.settings.containerSize}px ${0.25 * this.settings.containerSize}px; border-color: transparent transparent ${this.settings.arrowColor} transparent;"></div>
+            </div>
+        `;
     }
 
     #setup() {
-        document.body.appendChild(this.container);
+        document.body.innerHTML += this.#getMarkup();
 
         this.clickHandler = this.clickHandler.bind(this);
-        this.container.addEventListener("click", this.clickHandler);
+        document.querySelector(".upward-container").addEventListener("click", this.clickHandler);
 
         this.scrollHandler = this.scrollHandler.bind(this);
         if (!this.settings.alwaysVisible) {
             window.addEventListener("scroll", this.scrollHandler);
-        } else {
-            this.fadeIn(this.container);
+            return;
         }
+
+        this.#fadeIn(document.querySelector(".upward-container"));
     }
 
     clickHandler() {
@@ -127,42 +102,42 @@ export class UpWard {
         if (window.pageYOffset > this.settings.trigger) {
             if (!this.isDisplay) {
                 this.isDisplay = true;
-                this.fadeIn(this.container, 1000);
+                this.#fadeIn(document.querySelector(".upward-container"), 1000);
             }
         } else {
             if (this.isDisplay) {
                 this.isDisplay = false;
-                this.fadeOut(this.container, 1000);
+                this.#fadeOut(document.querySelector(".upward-container"), 1000);
             }
         }
     }
 
-    fadeIn(element, ms) {
+    #fadeIn(element, ms) {
         element.style["opacity"] = 0;
         element.style["display"] = "block";
-      
+
         if (ms) {
             let opacity = 0;
-            
-            const timer = setInterval(function() {
-            opacity += 50 / ms;
-            
-            if (opacity >= 1) {
-                clearInterval(timer);
-                opacity = 1;
-            }
 
-            element.style["opacity"] = opacity;
-          }, 50);
+            const timer = setInterval(function () {
+                opacity += 50 / ms;
+
+                if (opacity >= 1) {
+                    clearInterval(timer);
+                    opacity = 1;
+                }
+
+                element.style["opacity"] = opacity;
+            }, 50);
         } else {
-          element.style["opacity"] = 1;
+            element.style["opacity"] = 1;
         }
     }
 
-    fadeOut(element, ms) {
+    #fadeOut(element, ms) {
         if (ms) {
             element.style["transition"] = "opacity" + ms + "ms";
-            element.addEventListener("transitionend", function(e) {
+            element.addEventListener("transitionend", function (e) {
                 element.style["display"] = "none";
             }, false);
         }
