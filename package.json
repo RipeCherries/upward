@@ -1,26 +1,33 @@
 {
-  "name": "@ripecherries/upward",
-  "version": "1.0.4",
+  "name": "@ripecherries/up-ward",
+  "version": "1.0.0",
   "description": "A simple library that allows users of your site to return to the top of the page",
-  "source": "src/upward.plugin.js",
-  "main": "dist/main.js",
-  "module": "dist/module.js",
+  "main": "dist/upward.plugin.cjs.js",
+  "module": "dist/upward.plugin.esm.js",
+  "browser": "dist/upward.plugin.umd.js",
   "scripts": {
-    "dev": "parcel watch",
-    "build": "parcel build"
+    "build": "rollup -c"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/RipeCherries/upward.git"
   },
-  "keywords": [],
-  "author": "RipeCherries",
-  "license": "MIT",
+  "author": "",
+  "license": "ISC",
   "bugs": {
     "url": "https://github.com/RipeCherries/upward/issues"
   },
   "homepage": "https://github.com/RipeCherries/upward#readme",
   "devDependencies": {
-    "parcel": "^2.8.3"
-  }
+    "@babel/core": "^7.20.12",
+    "@babel/preset-env": "^7.20.2",
+    "rollup": "^2.79.1",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0"
+  },
+  "files": [
+    "dist",
+    "src"
+  ]
 }

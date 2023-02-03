@@ -1,4 +1,4 @@
-export class UpWard {
+export default class UpWard {
     constructor(userSettings) {
         this.#setSettings();
         this.#extendSettings(userSettings);
