@@ -6,7 +6,12 @@
   "module": "dist/upward.plugin.esm.js",
   "browser": "dist/upward.plugin.umd.js",
   "scripts": {
-    "build": "rollup -c"
+    "dev": "rollup -c .config/rollup.config.js --watch",
+    "build": "rollup -c",
+    "lint": "eslint . --ext .js"
+  },
+  "eslintConfig": {
+    "extends": "./.config/eslint.config"
   },
   "repository": {
     "type": "git",
@@ -21,6 +26,9 @@
   "devDependencies": {
     "@babel/core": "^7.20.12",
     "@babel/preset-env": "^7.20.2",
+    "eslint": "^8.33.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.27.5",
     "rollup": "^2.79.1",
     "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-commonjs": "^10.1.0",
