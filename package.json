@@ -1,0 +1,24 @@
+{
+  "name": "up-ward-docs",
+  "version": "1.0.0",
+  "description": "Website with documentation for the up-ward library",
+  "source": "index.html",
+  "scripts": {
+    "dev": "parcel --open",
+    "build": "parcel build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RipeCherries/upward.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RipeCherries/upward/issues"
+  },
+  "homepage": "https://github.com/RipeCherries/upward#readme",
+  "devDependencies": {
+    "@ripecherries/up-ward": "^1.0.0",
+    "parcel": "^2.8.3"
+  }
+}
