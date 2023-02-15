@@ -1,0 +1,16 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><link rel="stylesheet" href="doc/introduction.09b4856b.css"><link rel="stylesheet" href="doc/introduction.33cab037.css"><title>Quick Start | UpWard</title></head><body> <header class="header"> <div class="header__container"> <a class="header__container-logo" href="/"> <img src="logo.e553c08c.svg" alt="logo"> </a> <nav class="header__container-nav"> <a href="/">Home</a> <a class="active" href="doc/introduction.html">Docs</a> <a href="https://github.com/RipeCherries/upward" target="_blank">GitHub</a> </nav> </div> </header> <div class="content"> <div class="documentation"> <div class="documentation__sidebar"> <div class="documentation__sidebar-menu"> <a href="/doc/introduction">Introduction</a> <a href="doc/quick_start.html">Quick Start</a> <a href="doc/options.html">Options & Configuration</a> </div> </div> <div class="documentation__content"> <h1 class="documentation__content-title">Quick Start</h1> <p> Adding your first return button to the top of a web page is very simple. All you need is to write just 2 lines of code: </p> <pre class="language-javascript">
+                <code>import UpWard from &quot;@ripecherries/up-ward&quot;;
+
+const up = new UpWard();</code>
+            </pre> <p> And that’s it! Do you want to change the appearance of the button? Just pass the UserSettings object to the constructor: </p> <pre class="language-javascript">
+                <code>const up = new UpWard({
+    position: &quot;right&quot;,
+    offset: 30,
+    bottomOffset: 30,
+    containerSize: 50,
+    containerColor: &quot;#17252A&quot;,
+    arrowColor: &quot;#FEFFFF&quot;,
+    trigger: 800,
+    zIndex: 1
+});</code>
+            </pre> <p> For a full list of options, see <a href="#">Options & Configuration</a> </p> </div> </div> </div> <footer class="footer"> <div class="footer__container"> <p class="footer__container-nametag"> <span>Made with ♥ by </span> <a href="https://github.com/RipeCherries" target="_blank">Egoshin Alexey</a> </p> </div> </footer> <script src="doc/introduction.11ee8dc3.js"></script> <script>hljs.highlightAll();</script> </body></html>
