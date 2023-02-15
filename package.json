@@ -19,6 +19,7 @@
   "homepage": "https://github.com/RipeCherries/upward#readme",
   "devDependencies": {
     "@ripecherries/up-ward": "^1.0.0",
+    "highlight.js": "^11.7.0",
     "parcel": "^2.8.3"
   }
 }
