@@ -5,7 +5,7 @@
   "source": "index.html",
   "scripts": {
     "dev": "parcel --open",
-    "build": "parcel build --dist-dir docs --public-url ./ --no-cache"
+    "build": "parcel build --no-cache"
   },
   "repository": {
     "type": "git",
