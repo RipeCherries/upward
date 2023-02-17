@@ -42,7 +42,6 @@ h2 {
 .header {
     background: #2B7A78;
     width: 100%;
-    height: 5em;
 }
 
 .header__container {
@@ -67,6 +66,21 @@ h2 {
     display: inline-block;
     height: 100%;
     width: 10em;
+    text-align: center;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 4em;
+}
+
+.header__container-mobile-nav {
+    display: none;
+    height: 100%;
+    width: 100%;
+}
+
+.header__container-mobile-nav a {
+    height: 100%;
+    min-width: 33.33%;
     text-align: center;
     font-weight: 300;
     font-size: 20px;
@@ -161,4 +175,28 @@ h2 {
 
 .footer__container-nametag span {
     opacity: 0.75;
+}
+
+@media (max-width: 800px) {
+    body {
+        font-size: 14px;
+    }
+
+    .header__container {
+        flex-direction: column;
+    }
+
+    nav.header__container-nav {
+        display: none;
+    }
+
+    nav.header__container-mobile-nav {
+        display: flex;
+    }
+
+    img.logo {
+        display: block;
+        margin: 1.5em auto 0;
+        width: 10em;
+    }
 }
