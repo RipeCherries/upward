@@ -2,66 +2,86 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../styles/atom-one-light.min.css">
     <link rel="stylesheet" href="../styles/docs.css">
     <title>Installing | UpWard</title>
 </head>
 <body>
-<header class="header">
-    <div class="header__container">
-        <a class="header__container-logo" href="/">
-            <img src="../images/logo.svg" alt="logo">
-        </a>
-        <nav class="header__container-nav">
-            <a href="/">Home</a>
-            <a class="active" href="introduction.html">Docs</a>
-            <a href="https://github.com/RipeCherries/upward" target="_blank">GitHub</a>
-        </nav>
-    </div>
-</header>
-<div class="content">
-    <div class="documentation">
-        <div class="documentation__sidebar">
-            <div class="documentation__sidebar-menu">
-                <a href="introduction.html">Introduction</a>
-                <a href="quick_start.html">Quick Start</a>
-                <a href="options.html">Options & Configuration</a>
+<div class="wrapper">
+    <div class="wrapper__content">
+        <header class="header">
+            <div class="header__container">
+                <a class="header__container-logo" href="/">
+                    <img src="../images/logo.svg" alt="logo">
+                </a>
+                <nav class="header__container-nav">
+                    <a href="/">Home</a>
+                    <a class="active" href="introduction.html">Docs</a>
+                    <a href="https://github.com/RipeCherries/upward" target="_blank">GitHub</a>
+                </nav>
+                <nav class="header__container-mobile-nav">
+                    <a href="/">Home</a>
+                    <a class="active" href="/doc/introduction.html">Docs</a>
+                    <a href="https://github.com/RipeCherries/upward" target="_blank">GitHub</a>
+                </nav>
             </div>
-        </div>
-        <div class="documentation__content">
-            <h1 class="documentation__content-title">What is UP-WARD?</h1>
-            <p>
-                UP-WARD is the fastest and easiest way to add a return button to the top of the page to your website. This
-                library is supported by Chrome, Safari, Firefox and Edge browsers.
-            </p>
-            <h2 class="documentation__content-installing">Installing</h2>
-            <p>
-                You can quickly install UP-WARD via
-                <a href="https://npmjs.com/" target="_blank">npm</a>
-                :
-            </p>
-            <pre class="language-bash">
+        </header>
+        <div class="content">
+            <div class="documentation">
+                <div class="documentation__sidebar">
+                    <div class="documentation__sidebar-menu">
+                        <a href="introduction.html">Introduction</a>
+                        <a href="quick_start.html">Quick Start</a>
+                        <a href="options.html">Options & Configuration</a>
+                    </div>
+                </div>
+                <div class="documentation__mobile-sidebar">
+                    <div class="documentation__mobile-sidebar-menu">
+                        <a href="introduction.html">Introduction</a>
+                        <a href="quick_start.html">Quick Start</a>
+                        <a href="options.html">Options & Configuration</a>
+                    </div>
+                </div>
+                <div class="documentation__content">
+                    <h1 class="documentation__content-title">What is UP-WARD?</h1>
+                    <p>
+                        UP-WARD is the fastest and easiest way to add a return button to the top of the page to your
+                        website. This
+                        library is supported by Chrome, Safari, Firefox and Edge browsers.
+                    </p>
+                    <h2 class="documentation__content-installing">Installing</h2>
+                    <p>
+                        You can quickly install UP-WARD via
+                        <a href="https://npmjs.com/" target="_blank">npm</a>
+                        :
+                    </p>
+                    <pre class="language-bash">
                 <code>$ npm install --save @ripecherries/up-ward</code>
             </pre>
-            <p>
-                Or, if you want something a little more lightweight, you can give
-                <a href="https://yarnpkg.com/" target="_blank">Yarn</a>
-                a try:
-            </p>
-            <pre class="language-bash">
+                    <p>
+                        Or, if you want something a little more lightweight, you can give
+                        <a href="https://yarnpkg.com/" target="_blank">Yarn</a>
+                        a try:
+                    </p>
+                    <pre class="language-bash">
                 <code>$ yarn add --dev @ripecherries/up-ward</code>
             </pre>
+                </div>
+            </div>
         </div>
     </div>
+    <footer class="footer">
+        <div class="footer__container">
+            <p class="footer__container-nametag">
+                <span>Made with ♥ by </span>
+                <a href="https://github.com/RipeCherries" target="_blank">Egoshin Alexey</a>
+            </p>
+        </div>
+    </footer>
 </div>
-<footer class="footer">
-    <div class="footer__container">
-        <p class="footer__container-nametag">
-            <span>Made with ♥ by </span>
-            <a href="https://github.com/RipeCherries" target="_blank">Egoshin Alexey</a>
-        </p>
-    </div>
-</footer>
 <script src="../scripts/highlight.min.js"></script>
 <script>hljs.highlightAll();</script>
 </body>

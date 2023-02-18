@@ -15,8 +15,17 @@ body {
 body {
     font-family: "Montserrat", sans-serif;
     font-size: 16px;
-    /*background: #DEF2F1;*/
     color: #FEFFFF;
+}
+
+.wrapper {
+    /*height: 100%;*/
+    display: flex;
+    flex-direction: column;
+}
+
+.wrapper__content {
+    flex: 1 0 auto;
 }
 
 a {
@@ -32,6 +41,7 @@ img {
 h1 {
     font-weight: 400;
     font-size: 2em;
+    line-height: 1.25em;
 }
 
 h2 {
@@ -42,7 +52,6 @@ h2 {
 .header {
     background: #2B7A78;
     width: 100%;
-    height: 5em;
 }
 
 .header__container {
@@ -73,12 +82,27 @@ h2 {
     line-height: 4em;
 }
 
+.header__container-mobile-nav {
+    display: none;
+    height: 100%;
+    width: 100%;
+}
+
+.header__container-mobile-nav a {
+    height: 100%;
+    min-width: 33.33%;
+    text-align: center;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 4em;
+}
+
 .active {
     background: #17252A;
 }
 
 .content {
-    min-height: 100%;
+    height: 100%;
 }
 
 .documentation {
@@ -107,6 +131,29 @@ h2 {
     padding: 20px 0;
 }
 
+.documentation__mobile-sidebar {
+    display: none;
+    background: #FEFFFF;
+    width: 100%;
+    overflow: scroll;
+    border-bottom: 1px solid #17252A;
+}
+
+.documentation__mobile-sidebar-menu {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.documentation__mobile-sidebar-menu a {
+    width: 100%;
+    color: #17252A;
+    padding: 1em 4em;
+    line-height: 1em;
+    text-align: center;
+}
+
 .documentation__content {
     background: #f7f7fa;
     line-height: 1.5em;
@@ -115,7 +162,7 @@ h2 {
     min-height: 600px;
     overflow: hidden;
     width: calc(100% - 300px);
-    padding: 2em 75px 15em 3em;
+    padding: 2em 75px 50px 3em;
 }
 
 .documentation__content-title {
@@ -191,10 +238,10 @@ pre code.hljs {
 
 .footer {
     display: flex;
+    flex: 0 0 auto;
     background: #2B7A78;
     width: 100%;
     height: 7em;
-    margin-top: -7em;
     font-size: 1.2em;
 }
 
@@ -204,4 +251,43 @@ pre code.hljs {
 
 .footer__container-nametag span {
     opacity: 0.75;
+}
+
+@media screen and (max-width: 800px) {
+    body {
+        font-size: 14px;
+    }
+    .header__container {
+        flex-direction: column;
+    }
+
+    .header__container-nav {
+        display: none;
+    }
+
+    .header__container-mobile-nav {
+        display: flex;
+    }
+
+    .logo {
+        display: block;
+        margin: 1.5em auto 0;
+        width: 10em;
+    }
+
+    .documentation__sidebar {
+        display: none;
+    }
+
+    .documentation__mobile-sidebar {
+        display: block;
+    }
+
+    .documentation__content {
+        padding-top: 2em;
+        padding-left: 3em;
+        padding-right: 3em;
+        width: 100%;
+        margin-left: 0;
+    }
 }
