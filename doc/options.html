@@ -2,137 +2,156 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../styles/docs.css">
     <title>Options & Configuration | UpWard</title>
 </head>
 <body>
-<header class="header">
-    <div class="header__container">
-        <a class="header__container-logo" href="/">
-            <img src="../images/logo.svg" alt="logo">
-        </a>
-        <nav class="header__container-nav">
-            <a href="/">Home</a>
-            <a class="active" href="introduction.html">Docs</a>
-            <a href="https://github.com/RipeCherries/upward" target="_blank">GitHub</a>
-        </nav>
-    </div>
-</header>
-<div class="content">
-    <div class="documentation">
-        <div class="documentation__sidebar">
-            <div class="documentation__sidebar-menu">
-                <a href="introduction.html">Introduction</a>
-                <a href="quick_start.html">Quick Start</a>
-                <a href="options.html">Options & Configuration</a>
+<div class="wrapper">
+    <div class="wrapper__content">
+        <header class="header">
+            <div class="header__container">
+                <a class="header__container-logo" href="/">
+                    <img src="../images/logo.svg" alt="logo">
+                </a>
+                <nav class="header__container-nav">
+                    <a href="/">Home</a>
+                    <a class="active" href="introduction.html">Docs</a>
+                    <a href="https://github.com/RipeCherries/upward" target="_blank">GitHub</a>
+                </nav>
+                <nav class="header__container-mobile-nav">
+                    <a href="/">Home</a>
+                    <a class="active" href="/doc/introduction.html">Docs</a>
+                    <a href="https://github.com/RipeCherries/upward" target="_blank">GitHub</a>
+                </nav>
+            </div>
+        </header>
+        <div class="content">
+            <div class="documentation">
+                <div class="documentation__sidebar">
+                    <div class="documentation__sidebar-menu">
+                        <a href="introduction.html">Introduction</a>
+                        <a href="quick_start.html">Quick Start</a>
+                        <a href="options.html">Options & Configuration</a>
+                    </div>
+                </div>
+                <div class="documentation__mobile-sidebar">
+                    <div class="documentation__mobile-sidebar-menu">
+                        <a href="introduction.html">Introduction</a>
+                        <a href="quick_start.html">Quick Start</a>
+                        <a href="options.html">Options & Configuration</a>
+                    </div>
+                </div>
+                <div class="documentation__content">
+                    <h1 class="documentation__content-title">Options & Configuration</h1>
+                    <p>UP-WARD options:</p>
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Option</th>
+                            <th>Description</th>
+                            <th>Type</th>
+                            <th>Default</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>
+                                <code>position</code>
+                            </td>
+                            <td>On which side the button will be shown ("left" or "right")</td>
+                            <td>String</td>
+                            <td>left</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>offset</code>
+                            </td>
+                            <td>How many pixel the button is distant from the edge of the screen, based on the location setted
+                            </td>
+                            <td>Integer</td>
+                            <td>20</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>bottomOffset</code>
+                            </td>
+                            <td>How many pixel the button is distant from the bottom edge of the screen</td>
+                            <td>Integer</td>
+                            <td>20</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>containerSize</code>
+                            </td>
+                            <td>The width and height of the button</td>
+                            <td>Integer</td>
+                            <td>30</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>containerRadius</code>
+                            </td>
+                            <td>Allows you to round the corners of the button</td>
+                            <td>Integer</td>
+                            <td>10</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>containerColor</code>
+                            </td>
+                            <td>The color of the container (in HEX format)</td>
+                            <td>String</td>
+                            <td>#000000</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>arrowColor</code>
+                            </td>
+                            <td>The color of the arrow (in HEX format)</td>
+                            <td>String</td>
+                            <td>#FFFFFF</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>alwaysVisible</code>
+                            </td>
+                            <td>Set to true if u want the button to be always visible</td>
+                            <td>Boolean</td>
+                            <td>false</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>trigger</code>
+                            </td>
+                            <td>After how many scrolled down pixels the button must be shown</td>
+                            <td>Integer</td>
+                            <td>100</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>zIndex</code>
+                            </td>
+                            <td>Set the z-index</td>
+                            <td>Integer</td>
+                            <td>1</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
-        <div class="documentation__content">
-            <h1 class="documentation__content-title">Options & Configuration</h1>
-            <p>UP-WARD options:</p>
-            <table>
-                <thead>
-                <tr>
-                    <th>Option</th>
-                    <th>Description</th>
-                    <th>Type</th>
-                    <th>Default</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>
-                        <code>position</code>
-                    </td>
-                    <td>On which side the button will be shown ("left" or "right")</td>
-                    <td>String</td>
-                    <td>left</td>
-                </tr>
-                <tr>
-                    <td>
-                        <code>offset</code>
-                    </td>
-                    <td>How many pixel the button is distant from the edge of the screen, based on the location setted
-                    </td>
-                    <td>Integer</td>
-                    <td>20</td>
-                </tr>
-                <tr>
-                    <td>
-                        <code>bottomOffset</code>
-                    </td>
-                    <td>How many pixel the button is distant from the bottom edge of the screen</td>
-                    <td>Integer</td>
-                    <td>20</td>
-                </tr>
-                <tr>
-                    <td>
-                        <code>containerSize</code>
-                    </td>
-                    <td>The width and height of the button</td>
-                    <td>Integer</td>
-                    <td>30</td>
-                </tr>
-                <tr>
-                    <td>
-                        <code>containerRadius</code>
-                    </td>
-                    <td>Allows you to round the corners of the button</td>
-                    <td>Integer</td>
-                    <td>10</td>
-                </tr>
-                <tr>
-                    <td>
-                        <code>containerColor</code>
-                    </td>
-                    <td>The color of the container (in HEX format)</td>
-                    <td>String</td>
-                    <td>#000000</td>
-                </tr>
-                <tr>
-                    <td>
-                        <code>arrowColor</code>
-                    </td>
-                    <td>The color of the arrow (in HEX format)</td>
-                    <td>String</td>
-                    <td>#FFFFFF</td>
-                </tr>
-                <tr>
-                    <td>
-                        <code>alwaysVisible</code>
-                    </td>
-                    <td>Set to true if u want the button to be always visible</td>
-                    <td>Boolean</td>
-                    <td>false</td>
-                </tr>
-                <tr>
-                    <td>
-                        <code>trigger</code>
-                    </td>
-                    <td>After how many scrolled down pixels the button must be shown</td>
-                    <td>Integer</td>
-                    <td>100</td>
-                </tr>
-                <tr>
-                    <td>
-                        <code>zIndex</code>
-                    </td>
-                    <td>Set the z-index</td>
-                    <td>Integer</td>
-                    <td>1</td>
-                </tr>
-                </tbody>
-            </table>
+    </div>
+    <footer class="footer">
+        <div class="footer__container">
+            <p class="footer__container-nametag">
+                <span>Made with ♥ by </span>
+                <a href="https://github.com/RipeCherries" target="_blank">Egoshin Alexey</a>
+            </p>
         </div>
-    </div>
+    </footer>
 </div>
-<footer class="footer">
-    <div class="footer__container">
-        <p class="footer__container-nametag">
-            <span>Made with ♥ by </span>
-            <a href="https://github.com/RipeCherries" target="_blank">Egoshin Alexey</a>
-        </p>
-    </div>
-</footer>
 </body>
 </html>
