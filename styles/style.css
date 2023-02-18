@@ -177,7 +177,7 @@ h2 {
     opacity: 0.75;
 }
 
-@media (max-width: 800px) {
+@media screen and (max-width: 800px) {
     body {
         font-size: 14px;
     }
@@ -186,17 +186,26 @@ h2 {
         flex-direction: column;
     }
 
-    nav.header__container-nav {
+    .header__container-nav {
         display: none;
     }
 
-    nav.header__container-mobile-nav {
+    .header__container-mobile-nav {
         display: flex;
     }
 
-    img.logo {
+    .logo {
         display: block;
         margin: 1.5em auto 0;
         width: 10em;
+    }
+
+    .content__container {
+        flex-direction: column;
+    }
+
+    .content__container-img {
+        width: auto;
+        margin-left: 0;
     }
 }
