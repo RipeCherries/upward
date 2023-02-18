@@ -206,12 +206,16 @@ pre code.hljs {
 }
 
 .documentation__content table {
+    display: block;
+    max-width: fit-content;
+    overflow-x: auto;
     background: #FEFFFF;
     border-collapse: collapse;
     border-spacing: 0;
     border: 1px solid #2B7A78;
     margin-bottom: 25px;
     margin-top: 0.5em;
+
 }
 
 .documentation__content table thead {
